@@ -1,0 +1,142 @@
+# примеры API-запросов
+
+@baseUrl = http://127.0.0.1:8000/api/v1
+###
+
+
+# поиск продуктов по названию и описанию
+GET {{baseUrl}}/products/?search=помидор
+Content-Type: application/json
+
+###
+
+# создание склада
+POST {{baseUrl}}/stocks/
+Content-Type: application/json
+
+{
+  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 250,
+      "price": 120.50
+    },
+    {
+      "product": 3,
+      "quantity": 100,
+      "price": 180
+    }
+  ]
+}
+
+###
+
+# обновляем записи на складе
+PATCH {{baseUrl}}/stocks/4/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 100,
+      "price": 130.80
+    },
+    {
+      "product": 3,
+      "quantity": 243,
+      "price": 145
+    }
+  ]
+}
+
+###
+
+# поиск складов, где есть определенный продукт
+GET {{baseUrl}}/stocks/?products=2
+Content-Type: application/json
+
+
+
+
+
+###
+GET http://127.0.0.1:8000/api/v1/products/
+###
+GET http://127.0.0.1:8000/api/v1/products/?search=йй
+###
+POST http://127.0.0.1:8000/api/v1/products/
+Content-Type: application/json
+
+{
+  "title": "ццццц",
+  "description": "Лучшие груши на рынке"
+}
+###
+
+PATCH http://127.0.0.1:8000/api/v1/products/2/
+Content-Type: application/json
+
+{
+  "description": "Самые сочные и ароматные помидорки"
+}
+###
+
+DELETE http://127.0.0.1:8000/api/v1/products/1/
+
+
+
+
+###
+GET http://127.0.0.1:8000/api/v1/stocks/
+
+###
+POST http://127.0.0.1:8000/api/v1/stocks/
+Content-Type: application/json
+
+{
+  "address": "1212312312312323123мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "positions": [
+    {
+      "product": 4,
+      "quantity": 250,
+      "price": 120.50
+    },
+    {
+      "product": 3,
+      "quantity": 100,
+      "price": 180
+    }
+  ]
+}
+
+###
+GET http://127.0.0.1:8000/api/v1/stocks/3/
+
+###
+
+PATCH http://127.0.0.1:8000/api/v1/stocks/3/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 4,
+      "quantity": 1121,
+      "price": 130.80
+    },
+    {
+      "product": 3,
+      "quantity": 111,
+      "price": 111
+    }
+  ]
+}
+###
+
+GET http://127.0.0.1:8000/api/v1/stocks/?products__id=3
+###
+DELETE http://127.0.0.1:8000/api/v1/stocks/1/
+
+###
